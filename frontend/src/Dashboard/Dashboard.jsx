@@ -97,7 +97,8 @@ useEffect(()=>{
               Welcome back, Admin
             </p>
 
-            <h2>Checking version changes......</h2>
+            <h2>Checking version changes...-_- ...</h2>
+
           
           </div>
 
