@@ -1,9 +1,18 @@
-appId: com.demo.electronupdate
+appId: com.demo.autoupdater
 
 productName: Electron Auto Update Demo
 
 directories:
   output: release
+
+files:
+  - electron/**
+  - backend/**
+  - frontend/dist/**
+  - package.json
+
+extraMetadata:
+  main: electron/main.js
 
 linux:
   target:
@@ -11,5 +20,5 @@ linux:
 
 publish:
   provider: github
-  owner: YOUR_GITHUB_USERNAME
-  repo: YOUR_REPOSITORY_NAME
+  owner: sreelakshmit323-svg
+  repo: auto-version-updater-demo

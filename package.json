@@ -3,25 +3,24 @@
   "version": "1.0.0",
   "description": "Electron Auto Update Demo",
   "main": "electron/main.js",
-
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "backend": "node backend/server.js",
+    "frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:frontend && electron-builder"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "axios": "^1.18.1",
     "cors": "^2.8.6",
-    "electron": "^43.2.0",
     "electron-updater": "^6.8.9",
     "express": "^5.2.1"
   },
-
   "devDependencies": {
+    "electron": "^43.2.0",
     "electron-builder": "^26.15.3"
   }
 }
