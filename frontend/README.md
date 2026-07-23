@@ -24,3 +24,12 @@ If you are developing a production application, we recommend using TypeScript wi
 <!-- npm run backend         -for run backend -->
 <!-- npm run dev           -for run react frontend -->
 <!-- npm start             -for run electron -->
+
+
+<!-- after mdification -->
+<!-- npm run build           -for build the new app -->
+<!-- git add . -->
+<!-- git commit -m "checking" -->
+<!-- git tag v1.0.1 -->
+<!-- git push origin main -->
+<!-- git  -->

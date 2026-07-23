@@ -1,15 +1,37 @@
-import Login from "../Login/Login";
+import { useEffect, useState } from "react";
 import "./Dashboard.css";
 
 function Dashboard({ setPage }){
+ const [updateStatus, setUpdateStatus] = useState("Ready");
+const updateVersion = () => {
 
-  const updateVersion = () => {
-    alert("Checking for latest version...");
+  if (window.electronAPI) {
 
-  window.electronAPI.checkUpdate();
+    window.electronAPI.checkUpdate();
 
+  } else {
 
-  };
+    console.log("Electron API not available");
+
+  }
+
+};
+
+useEffect(()=>{
+
+  if(window.electronAPI){
+
+    window.electronAPI.onUpdateStatus(
+      (message)=>{
+
+        setUpdateStatus(message);
+
+      }
+    );
+
+  }
+
+},[]);
 
 
   const logout = () => {
@@ -74,6 +96,8 @@ function Dashboard({ setPage }){
             <p>
               Welcome back, Admin
             </p>
+
+            <h2>Checking version change ..........</h2>
           </div>
 
 

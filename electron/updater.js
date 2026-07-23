@@ -1,21 +1,33 @@
-const { autoUpdater } = require("electron-updater");
 
 
-autoUpdater.autoDownload = false;
 
 
-function checkForUpdates(){
+const {
+    autoUpdater
+} = require("electron-updater");
 
-    if(process.env.NODE_ENV === "development"){
+const {
+    BrowserWindow
+} = require("electron");
 
-        console.log(
-            "Development mode: skipping real update check"
+
+function sendStatus(message){
+
+    const win = BrowserWindow.getAllWindows()[0];
+
+    if(win){
+
+        win.webContents.send(
+            "update-status",
+            message
         );
-
-        return;
 
     }
 
+}
+
+
+function checkForUpdates(){
 
     autoUpdater.checkForUpdates();
 
@@ -26,8 +38,8 @@ autoUpdater.on(
     "checking-for-update",
     ()=>{
 
-        console.log(
-            "Checking GitHub releases..."
+        sendStatus(
+            "Checking for update..."
         );
 
     }
@@ -36,11 +48,10 @@ autoUpdater.on(
 
 autoUpdater.on(
     "update-available",
-    (info)=>{
+    ()=>{
 
-        console.log(
-            "Update available:",
-            info.version
+        sendStatus(
+            "Update available. Downloading..."
         );
 
     }
@@ -51,8 +62,8 @@ autoUpdater.on(
     "update-not-available",
     ()=>{
 
-        console.log(
-            "No update available"
+        sendStatus(
+            "You are using latest version"
         );
 
     }
@@ -60,18 +71,31 @@ autoUpdater.on(
 
 
 autoUpdater.on(
-    "error",
-    (error)=>{
+    "download-progress",
+    (progress)=>{
 
-        console.log(
-            "Updater error:",
-            error.message
+        sendStatus(
+            `Downloading ${Math.round(progress.percent)}%`
         );
 
     }
 );
 
 
-module.exports = {
+autoUpdater.on(
+    "update-downloaded",
+    ()=>{
+
+        sendStatus(
+            "Update ready. Restarting..."
+        );
+
+        autoUpdater.quitAndInstall();
+
+    }
+);
+
+
+module.exports={
     checkForUpdates
 };
