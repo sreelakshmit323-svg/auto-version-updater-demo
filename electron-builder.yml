@@ -1,0 +1,15 @@
+appId: com.demo.electronupdate
+
+productName: Electron Auto Update Demo
+
+directories:
+  output: release
+
+linux:
+  target:
+    - AppImage
+
+publish:
+  provider: github
+  owner: YOUR_GITHUB_USERNAME
+  repo: YOUR_REPOSITORY_NAME
