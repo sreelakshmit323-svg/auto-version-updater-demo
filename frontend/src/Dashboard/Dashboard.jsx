@@ -98,7 +98,7 @@ useEffect(()=>{
             </p>
 
             <h2>Checking version changes...</h2>
-            <h1>blahhhhh</h1>
+          
           </div>
 
 

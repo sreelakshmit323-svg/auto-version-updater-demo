@@ -2,13 +2,9 @@
 
 
 
-const {
-    autoUpdater
-} = require("electron-updater");
+const {autoUpdater} = require("electron-updater");
 
-const {
-    BrowserWindow
-} = require("electron");
+const {BrowserWindow} = require("electron");
 
 
 function sendStatus(message){
@@ -23,7 +19,7 @@ function sendStatus(message){
         );
 
     }
-
+checkForUpdates
 }
 
 
