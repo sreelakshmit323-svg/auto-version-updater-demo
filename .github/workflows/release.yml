@@ -6,14 +6,28 @@ on:
       - "v*"
 
 
+permissions:
+  contents: write
+
+
 jobs:
+
   build:
 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+
+    runs-on: ${{ matrix.os }}
+
 
     steps:
 
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
 
@@ -23,21 +37,18 @@ jobs:
           node-version: 20
 
 
-      - name: Install root dependencies
+      - name: Install dependencies
         run: npm install
 
 
-      - name: Install frontend dependencies
+      - name: Build React
         run: |
           cd frontend
           npm install
-
-
-      - name: Build frontend
-        run: |
-          cd frontend
           npm run build
 
 
       - name: Build Electron
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build

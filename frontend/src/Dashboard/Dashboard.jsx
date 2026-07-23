@@ -169,9 +169,7 @@ function Dashboard({ setPage }){
           </p>
 
 
-          <button
-            onClick={updateVersion}
-          >
+          <button>
 
             Update Version
 

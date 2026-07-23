@@ -5,18 +5,35 @@ productName: Electron Auto Update Demo
 directories:
   output: release
 
+
 files:
   - electron/**
   - backend/**
   - frontend/dist/**
   - package.json
 
+
 extraMetadata:
   main: electron/main.js
 
+
+# Windows
+win:
+  target:
+    - nsis
+
+
+# macOS
+mac:
+  target:
+    - dmg
+
+
+# Linux
 linux:
   target:
     - AppImage
+
 
 publish:
   provider: github
