@@ -90,11 +90,11 @@ useEffect(()=>{
 
           <div>
             <h1>
-              Dashboard Update Check version
+              Dashboard Update Check version.......
             </h1>
 
             <p>
-              Welcome back, Admin
+              Welcome back, Admin.
             </p>
 
             <h2>Checking version changes...-_- ...</h2>
