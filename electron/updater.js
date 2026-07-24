@@ -19,7 +19,7 @@ function sendStatus(message){
         );
 
     }
-checkForUpdates
+
 }
 
 
