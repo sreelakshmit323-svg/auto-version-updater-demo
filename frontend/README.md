@@ -33,4 +33,4 @@ If you are developing a production application, we recommend using TypeScript wi
 <!-- git tag v1.0.1 -->
 <!-- git push origin main -->
 <!-- git push origin v1.0.1-->
-<!--  -->
+<!-- ./release/"Electron Auto Update Demo-1.0.8.AppImage"       -for testing run old version then click update version button -->

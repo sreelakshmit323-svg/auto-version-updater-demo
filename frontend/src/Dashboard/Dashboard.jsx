@@ -169,7 +169,7 @@ useEffect(()=>{
             </h2>
 
             <span>
-              No download running
+             {updateStatus === "Update Available" ? "New version available!" : updateStatus === "Downloading Update" ? "Downloading..." : updateStatus === "Update Downloaded" ? "Update downloaded. Ready to install." : updateStatus === "No Update Available" ? "You are on the latest version." : updateStatus === "Error" ? "Error checking for updates." : ""}
             </span>
 
           </div>
