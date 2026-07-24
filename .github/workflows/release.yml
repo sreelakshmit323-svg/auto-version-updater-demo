@@ -5,7 +5,6 @@ on:
     tags:
       - "v*"
 
-
 permissions:
   contents: write
 
@@ -41,10 +40,15 @@ jobs:
         run: npm install
 
 
-      - name: Build React
+      - name: Install frontend dependencies
         run: |
           cd frontend
           npm install
+
+
+      - name: Build frontend
+        run: |
+          cd frontend
           npm run build
 
 
@@ -52,3 +56,38 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run build
+
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-${{ matrix.os }}
+          path: release/*
+
+
+
+  release:
+
+    needs: build
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release
+
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/**/*.AppImage
+            release/**/*.exe
+            release/**/*.dmg
+            release/**/*.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,6 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
-
 const { checkForUpdates } = require("./updater");
 
 
@@ -21,6 +20,8 @@ function createWindow() {
         }
 
     });
+
+    
 
 
     win.removeMenu();
@@ -65,3 +66,6 @@ app.whenReady().then(() => {
     createWindow();
 
 });
+
+
+console.log("Running version:", app.getVersion());

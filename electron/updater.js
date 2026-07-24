@@ -1,6 +1,5 @@
-const {autoUpdater} = require("electron-updater");
-
-const {BrowserWindow} = require("electron");
+const { autoUpdater } = require("electron-updater");
+const { BrowserWindow, app } = require("electron");
 
 
 function sendStatus(message){
@@ -21,15 +20,20 @@ function sendStatus(message){
 
 function checkForUpdates(){
 
+    console.log("Manual update check started");
+    console.log("Current version:", app.getVersion());
+
     autoUpdater.checkForUpdates();
 
 }
+
 
 
 autoUpdater.on(
     "checking-for-update",
     ()=>{
 
+        console.log("Checking...");
         sendStatus(
             "Checking for update..."
         );
@@ -38,21 +42,27 @@ autoUpdater.on(
 );
 
 
+
 autoUpdater.on(
     "update-available",
-    ()=>{
+    (info)=>{
+
+        console.log("Update found:", info.version);
 
         sendStatus(
-            "Update available. Downloading..."
+            `Update available: ${info.version}`
         );
 
     }
 );
 
 
+
 autoUpdater.on(
     "update-not-available",
     ()=>{
+
+        console.log("No update");
 
         sendStatus(
             "You are using latest version"
@@ -62,9 +72,15 @@ autoUpdater.on(
 );
 
 
+
 autoUpdater.on(
     "download-progress",
     (progress)=>{
+
+        console.log(
+            "Downloading:",
+            progress.percent
+        );
 
         sendStatus(
             `Downloading ${Math.round(progress.percent)}%`
@@ -74,31 +90,50 @@ autoUpdater.on(
 );
 
 
+
 autoUpdater.on(
     "update-downloaded",
-    ()=>{
+    (info)=>{
 
-        sendStatus(
-            "Update ready. Restarting..."
+        console.log(
+            "Downloaded version:",
+            info.version
         );
 
-        autoUpdater.quitAndInstall();
+        sendStatus(
+            "Update downloaded. Restarting..."
+        );
+
+
+        setTimeout(()=>{
+
+            autoUpdater.quitAndInstall();
+
+        },2000);
 
     }
 );
+
 
 
 autoUpdater.on(
     "error",
     (error)=>{
-        console.log("UPDATE ERROR:");
-        console.log(error);
+
+        console.log(
+            "UPDATE ERROR:",
+            error
+        );
+
+        sendStatus(
+            "Update error: " + error.message
+        );
+
     }
 );
 
-module.exports={
+
+
+module.exports = {
     checkForUpdates
 };
-
-
-
