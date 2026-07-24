@@ -1,7 +1,3 @@
-
-
-
-
 const {autoUpdater} = require("electron-updater");
 
 const {BrowserWindow} = require("electron");
@@ -92,6 +88,17 @@ autoUpdater.on(
 );
 
 
+autoUpdater.on(
+    "error",
+    (error)=>{
+        console.log("UPDATE ERROR:");
+        console.log(error);
+    }
+);
+
 module.exports={
     checkForUpdates
 };
+
+
+

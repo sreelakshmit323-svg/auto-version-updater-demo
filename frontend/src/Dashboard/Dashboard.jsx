@@ -90,7 +90,7 @@ useEffect(()=>{
 
           <div>
             <h1>
-              Dashboard for checkinggggg
+              Dashboard for Electron Auto Version Updater
             </h1>
 
             <p>
@@ -165,7 +165,7 @@ useEffect(()=>{
             </h3>
 
             <h2>
-              Ready
+             {updateStatus}
             </h2>
 
             <span>
