@@ -26,10 +26,11 @@ If you are developing a production application, we recommend using TypeScript wi
 <!-- npm start             -for run electron -->
 
 
-<!-- after mdification -->
+<!-- after modification -->
 <!-- npm run build           -for build the new app -->
 <!-- git add . -->
 <!-- git commit -m "checking" -->
 <!-- git tag v1.0.1 -->
 <!-- git push origin main -->
-<!-- git  -->
+<!-- git push origin v1.0.1-->
+<!--  -->

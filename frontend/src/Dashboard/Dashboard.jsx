@@ -90,7 +90,7 @@ useEffect(()=>{
 
           <div>
             <h1>
-              Dashboard Update Check... version.
+              Dashboard Update Check... version....
             </h1>
 
             <p>
