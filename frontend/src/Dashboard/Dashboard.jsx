@@ -90,7 +90,7 @@ useEffect(()=>{
 
           <div>
             <h1>
-              Dashboard Update Check... version....
+              Dashboard Update Check version
             </h1>
 
             <p>
@@ -169,7 +169,7 @@ useEffect(()=>{
             </h2>
 
             <span>
-             {updateStatus === "Update Available" ? "New version available!" : updateStatus === "Downloading Update" ? "Downloading..." : updateStatus === "Update Downloaded" ? "Update downloaded. Ready to install." : updateStatus === "No Update Available" ? "You are on the latest version." : updateStatus === "Error" ? "Error checking for updates." : ""}
+              No download running
             </span>
 
           </div>

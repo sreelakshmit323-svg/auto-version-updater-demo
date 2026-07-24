@@ -132,6 +132,13 @@ autoUpdater.on(
     }
 );
 
+autoUpdater.on("update-available", (info)=>{
+    console.log("UPDATE AVAILABLE:", info.version);
+
+    sendStatus(
+        "Update available: " + info.version
+    );
+});
 
 
 module.exports = {
